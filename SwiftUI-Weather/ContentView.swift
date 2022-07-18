@@ -10,29 +10,14 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack{
-            LinearGradient(gradient: Gradient(colors: [.blue, Color("lightBlue")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
+            BackgroundView(topColor: .blue, bottomColor: Color("lightBlue"))
             
-            VStack{
-                Text("Location")
-                    .font(.system(size: 32, weight: .medium, design: .default))
-                    .foregroundColor(.white)
-                    .padding()
+            VStack {
+                CityTextView(cityName: "Dhaka")
                 
-                VStack(spacing: 10){
-                    Image(systemName: "cloud.sun.fill")
-                        .renderingMode(.original)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 180, height: 180)
-                    
-                    Text("76°")
-                        .font(.system(size: 70, weight: .medium))
-                        .foregroundColor(.white)
-                }
-                .padding(.bottom, 20)
+                mainWeatherView(weatherImage: "cloud.sun.fill", temperature: 76)
             
-                HStack(spacing: 20){
+                HStack(spacing: 25){
                     
                     weatherDayView(day: "Mon", image: "cloud.fill", temperature: 74)
                     weatherDayView(day: "Tue", image: "sun.max.fill", temperature: 78)
@@ -46,15 +31,7 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Button {
-                    print("button pressed")
-                } label: {
-                    Text("Change Day time")
-                        .frame(width: 280, height: 50)
-                        .background(.white)
-                        .font(.system(size: 20, weight: .bold, design: .default))
-                        .cornerRadius(20)
-                }
+                ButtonView(buttonText: "Change Day time", buttonTextColor: .blue, backgroundColor: .white)
                 
                 Spacer()
             }
@@ -79,7 +56,7 @@ struct weatherDayView: View {
     var body: some View {
         VStack{
             Text(day)
-                .font(.system(size: 30, weight: .light))
+                .font(.system(size: 25, weight: .light))
                 .foregroundColor(.white)
             
             Image(systemName: image)
@@ -88,10 +65,74 @@ struct weatherDayView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
             
-            Text("\(temperature)")
-                .font(.system(size: 30, weight: .medium))
+            Text("\(temperature)°")
+                .font(.system(size: 30, weight: .light))
                 .foregroundColor(.white)
             
         }
+    }
+}
+
+struct BackgroundView: View {
+    
+    var topColor: Color
+    var bottomColor: Color
+    
+    var body: some View {
+        LinearGradient(gradient: Gradient(colors: [topColor, bottomColor]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct mainWeatherView: View {
+    
+    var weatherImage: String
+    var temperature: Int
+    
+    var body: some View {
+        VStack(spacing: 10){
+            Image(systemName: weatherImage)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 180, height: 180)
+            
+            Text("\(temperature)°")
+                .font(.system(size: 70, weight: .medium))
+                .foregroundColor(.white)
+        }
+        .padding(.bottom, 30)
+    }
+}
+
+struct ButtonView: View {
+    
+    var buttonText: String
+    var buttonTextColor: Color
+    var backgroundColor: Color
+    
+    var body: some View {
+        Button {
+            print("button pressed")
+        } label: {
+            Text("Change Day time")
+                .frame(width: 280, height: 50)
+                .background(backgroundColor)
+                .foregroundColor(buttonTextColor)
+                .font(.system(size: 20, weight: .bold, design: .default))
+                .cornerRadius(20)
+        }
+    }
+}
+
+struct CityTextView: View {
+    
+    var cityName: String
+    
+    var body: some View {
+        Text(cityName)
+            .font(.system(size: 32, weight: .medium, design: .default))
+            .foregroundColor(.white)
+            .padding()
     }
 }
