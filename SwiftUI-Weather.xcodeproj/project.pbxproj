@@ -11,6 +11,8 @@
 		32BFAC2428841B1800F1D40F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFAC2328841B1800F1D40F /* ContentView.swift */; };
 		32BFAC2628841B1A00F1D40F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BFAC2528841B1A00F1D40F /* Assets.xcassets */; };
 		32BFAC2928841B1A00F1D40F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BFAC2828841B1A00F1D40F /* Preview Assets.xcassets */; };
+		32BFAC302885216900F1D40F /* WeatherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFAC2F2885216900F1D40F /* WeatherButton.swift */; };
+		32BFAC32288524B100F1D40F /* WeatherDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFAC31288524B100F1D40F /* WeatherDayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		32BFAC2328841B1800F1D40F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		32BFAC2528841B1A00F1D40F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32BFAC2828841B1A00F1D40F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		32BFAC2F2885216900F1D40F /* WeatherButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherButton.swift; sourceTree = "<group>"; };
+		32BFAC31288524B100F1D40F /* WeatherDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				32BFAC2328841B1800F1D40F /* ContentView.swift */,
 				32BFAC2528841B1A00F1D40F /* Assets.xcassets */,
 				32BFAC2728841B1A00F1D40F /* Preview Content */,
+				32BFAC2F2885216900F1D40F /* WeatherButton.swift */,
+				32BFAC31288524B100F1D40F /* WeatherDayView.swift */,
 			);
 			path = "SwiftUI-Weather";
 			sourceTree = "<group>";
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32BFAC32288524B100F1D40F /* WeatherDayView.swift in Sources */,
 				32BFAC2428841B1800F1D40F /* ContentView.swift in Sources */,
 				32BFAC2228841B1800F1D40F /* SwiftUI_WeatherApp.swift in Sources */,
+				32BFAC302885216900F1D40F /* WeatherButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

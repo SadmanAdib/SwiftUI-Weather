@@ -16,22 +16,21 @@ struct ContentView: View {
                 CityTextView(cityName: "Dhaka")
                 
                 mainWeatherView(weatherImage: "cloud.sun.fill", temperature: 76)
-            
+                
                 HStack(spacing: 25){
                     
-                    weatherDayView(day: "Mon", image: "cloud.fill", temperature: 74)
-                    weatherDayView(day: "Tue", image: "sun.max.fill", temperature: 78)
-                    weatherDayView(day: "Wed", image: "wind.snow", temperature: 80)
-                    weatherDayView(day: "Thu", image: "cloud.rain.fill", temperature: 80)
-                    weatherDayView(day: "Fri", image: "sunset.fill", temperature: 80)
-                   
+                    WeatherDayView(day: "Mon", image: "cloud.fill", temperature: 74)
+                    WeatherDayView(day: "Tue", image: "sun.max.fill", temperature: 78)
+                    WeatherDayView(day: "Wed", image: "wind.snow", temperature: 80)
+                    WeatherDayView(day: "Thu", image: "cloud.rain.fill", temperature: 80)
+                    WeatherDayView(day: "Fri", image: "sunset.fill", temperature: 80)
                     
                 }
                 .padding()
                 
                 Spacer()
                 
-                ButtonView(buttonText: "Change Day time", buttonTextColor: .blue, backgroundColor: .white)
+                WeatherButton(buttonText: "Change Day time", buttonTextColor: .blue, backgroundColor: .white)
                 
                 Spacer()
             }
@@ -44,32 +43,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-    }
-}
-
-struct weatherDayView: View {
-    
-    var day: String
-    var image: String
-    var temperature: Int
-    
-    var body: some View {
-        VStack{
-            Text(day)
-                .font(.system(size: 25, weight: .light))
-                .foregroundColor(.white)
-            
-            Image(systemName: image)
-                .renderingMode(.original)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 40, height: 40)
-            
-            Text("\(temperature)°")
-                .font(.system(size: 30, weight: .light))
-                .foregroundColor(.white)
-            
-        }
     }
 }
 
@@ -102,26 +75,6 @@ struct mainWeatherView: View {
                 .foregroundColor(.white)
         }
         .padding(.bottom, 30)
-    }
-}
-
-struct ButtonView: View {
-    
-    var buttonText: String
-    var buttonTextColor: Color
-    var backgroundColor: Color
-    
-    var body: some View {
-        Button {
-            print("button pressed")
-        } label: {
-            Text("Change Day time")
-                .frame(width: 280, height: 50)
-                .background(backgroundColor)
-                .foregroundColor(buttonTextColor)
-                .font(.system(size: 20, weight: .bold, design: .default))
-                .cornerRadius(20)
-        }
     }
 }
 
