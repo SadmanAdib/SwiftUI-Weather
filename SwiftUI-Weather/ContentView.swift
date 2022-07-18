@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isNight = false
+    
     var body: some View {
         ZStack{
-            BackgroundView(topColor: .blue, bottomColor: Color("lightBlue"))
+            BackgroundView(topColor: isNight ? .black : .blue, bottomColor: isNight ? .gray : Color("lightBlue"))
             
             VStack {
                 CityTextView(cityName: "Dhaka")
                 
-                mainWeatherView(weatherImage: "cloud.sun.fill", temperature: 76)
+                mainWeatherView(weatherImage: isNight ? "moon.stars.fill" : "cloud.sun.fill", temperature: 76)
                 
                 HStack(spacing: 25){
                     
@@ -30,7 +33,12 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                WeatherButton(buttonText: "Change Day time", buttonTextColor: .blue, backgroundColor: .white)
+                
+                Button {
+                    isNight.toggle()
+                } label: {
+                    WeatherButton(backgroundColor: .white, buttonTextColor: .blue)
+                }
                 
                 Spacer()
             }
@@ -89,3 +97,5 @@ struct CityTextView: View {
             .padding()
     }
 }
+
+
