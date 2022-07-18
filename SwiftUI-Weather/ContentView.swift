@@ -19,7 +19,7 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .padding()
                 
-                VStack{
+                VStack(spacing: 10){
                     Image(systemName: "cloud.sun.fill")
                         .renderingMode(.original)
                         .resizable()
@@ -31,62 +31,16 @@ struct ContentView: View {
                         .foregroundColor(.white)
                 }
                 
-                HStack{
+                Spacer()
+                
+                HStack(spacing: 20){
                     
-                    VStack{
-                        
-                        Text("Tue")
-                            .font(.system(size: 40, weight: .light))
-                            .foregroundColor(.white)
-                        
-                        Image(systemName: "sun.max.fill")
-                            .renderingMode(.original)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100)
-                        
-                        Text("74°")
-                            .font(.system(size: 40, weight: .medium))
-                            .foregroundColor(.white)
-                        
-                        
-                    }
-                    VStack{
-                        
-                        Text("Wed")
-                            .font(.system(size: 40, weight: .light))
-                            .foregroundColor(.white)
-                        
-                        Image(systemName: "sun.max.fill")
-                            .renderingMode(.original)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100)
-                        
-                        Text("70°")
-                            .font(.system(size: 40, weight: .medium))
-                            .foregroundColor(.white)
-                        
-                        
-                    }
-                    VStack{
-                        
-                        Text("Thu")
-                            .font(.system(size: 40, weight: .light))
-                            .foregroundColor(.white)
-                        
-                        Image(systemName: "sun.max.fill")
-                            .renderingMode(.original)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100)
-                        
-                        Text("66°")
-                            .font(.system(size: 40, weight: .medium))
-                            .foregroundColor(.white)
-                        
-                        
-                    }
+                    weatherDayView(day: "Mon", image: "cloud.fill", temperature: 74)
+                    weatherDayView(day: "Tue", image: "sun.max.fill", temperature: 78)
+                    weatherDayView(day: "Wed", image: "wind.snow", temperature: 80)
+                    weatherDayView(day: "Thu", image: "cloud.rain.fill", temperature: 80)
+                    weatherDayView(day: "Fri", image: "sunset.fill", temperature: 80)
+                   
                     
                 }
                 .padding()
@@ -102,5 +56,31 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct weatherDayView: View {
+    
+    var day: String
+    var image: String
+    var temperature: Int
+    
+    var body: some View {
+        VStack{
+            Text(day)
+                .font(.system(size: 30, weight: .light))
+                .foregroundColor(.white)
+            
+            Image(systemName: image)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40, height: 40)
+            
+            Text("\(temperature)")
+                .font(.system(size: 30, weight: .medium))
+                .foregroundColor(.white)
+            
+        }
     }
 }
